@@ -1,0 +1,12 @@
+{
+  "service": {
+    "name": "reposit-uaa-service",
+    "port": 8001
+  },
+  "db": {
+    "host": "127.0.0.1",
+    "port": 3306,
+    "name": "repo_uaa_be",
+    "user": "root"
+  }
+}
