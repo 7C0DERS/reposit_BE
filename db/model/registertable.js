@@ -24,6 +24,12 @@ module.exports = (sequelize, DataTypes) => {
     userName: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
+    isConfirmed: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+      unique: true 
+    }
   }, {
     sequelize,
     modelName: 'RegisterTable',

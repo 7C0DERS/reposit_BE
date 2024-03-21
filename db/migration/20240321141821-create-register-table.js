@@ -1,6 +1,7 @@
 'use strict';
 
 const { UUID } = require('sequelize');
+const { sequelize } = require('../Connection');
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -19,6 +20,9 @@ module.exports = {
       },
       password: {
         type: Sequelize.STRING
+      },
+      isConfirmed:{
+        type:Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
