@@ -13,7 +13,7 @@ app.use('/reposit',router)
 
 
 app.listen(3006,()=>{
-        console.log('server started on ')
+        console.log('server started on 3006 ')
     })
 
 

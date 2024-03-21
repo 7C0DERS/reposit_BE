@@ -1,14 +1,28 @@
 class registerRepository {
-    constructor ({model}) {
+    constructor({ model }) {
         this.model = model
     }
-    async registerRep(dto){
-        try{
-return this.model.create(dto)
+
+
+    async registerRep(dto) {
+        try {
+            return this.model.create(dto)
         }
-        catch(err){
+        catch (err) {
             console.log(err);
         }
+    }
+
+    async loginRep(dto) {
+      try {
+        return await this.model.findOne({
+          where: {
+            userName: dto
+          }
+        })
+      } catch (error) {
+        console.log(error);
+      }
     }
 
 }
