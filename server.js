@@ -1,11 +1,14 @@
 const express = require('express');
 const router = require('./router');
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({extended:false}));
+app.use(bodyParser.json());
 
-app.use('/',router)
+
+app.use('/reposit',router)
 
 
 
