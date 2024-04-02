@@ -10,15 +10,17 @@ const registerRep = new registerRepository(
     { model: registerTableModel }
   );
 class RegisterService {
-  static async registerSer(req) {
-    try {
-        const user = await registerRep.registerRep(req);
-        sendConfirmationEmail(user.email, user.confirmationCode); // Call the sendConfirmationEmail function
-        return user;
-    } catch (error) {
-        console.log(error);
+    static async registerSer(req) {
+        try {
+            const { user, confirmationCode } = await registerRep.registerRep(req); // Get user and confirmation code
+            await sendConfirmationEmail(user.email, confirmationCode); // Send confirmation email
+            return user;
+        } catch (error) {
+            console.log(error);
+            throw error; // Re-throw the error for handling in the caller
+        }
     }
-}
+
 
 static async loginSer(credentials) {
     try {
@@ -46,5 +48,15 @@ static async loginSer(credentials) {
         console.log(error);
     }
 }
+static async confirmEmail(confirmationCode) {
+    try {
+        const confirmed = await registerRep.confirmEmail(confirmationCode);
+        return confirmed;
+    } catch (error) {
+        console.error('Error confirming email:', error);
+        throw error;
+    }
+}
+
 }
 module.exports = RegisterService

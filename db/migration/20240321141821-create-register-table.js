@@ -24,6 +24,10 @@ module.exports = {
       isConfirmed:{
         type:Sequelize.BOOLEAN
       },
+      confirmationCode:{
+        allowNull: false,
+        type:Sequelize.UUID
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

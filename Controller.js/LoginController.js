@@ -21,4 +21,21 @@ exports.loginApi = async function loginApi (req,res) {
     } catch (error) {
         console.log(error);
     }
+
+    
 }
+exports.confirmationApi = async function confirmationApi(req, res) {
+    try {
+        const confirmationCode = req.params.confirmationCode;
+        const confirmed = await regservice.confirmEmail(confirmationCode);
+        if (confirmed) {
+            res.send('Email confirmed successfully.');
+        } else {
+            res.status(400).send('Invalid confirmation code.');
+        }
+    } catch (error) {
+        console.error('Error confirming email:', error);
+        res.status(500).send('Internal Server Error');
+    }
+}
+

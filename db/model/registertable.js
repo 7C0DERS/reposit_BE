@@ -29,7 +29,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true,
       defaultValue: false,
       unique: true 
-    }
+    },  confirmationCode: {
+      type: DataTypes.UUID,
+      allowNull: true,
+      unique: true,
+    },
   }, {
     sequelize,
     modelName: 'RegisterTable',
